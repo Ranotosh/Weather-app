@@ -25,3 +25,14 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Dependecies
+
+I have used Bootstrap 4,to install that use npm install bootstrap@4.0.0
+To run Bootstrap we need JQuery,to install JQuery use npm install jquery --save.
+
+## To Run
+
+Fork this project.Then go inside this project folder and use npm install -g @angular/cli@1.7.4.Then
+install dependencies.After doing all use `ng serve --open` to run this project.
+
