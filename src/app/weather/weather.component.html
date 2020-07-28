@@ -1,0 +1,144 @@
+<div id="background" class="container-fluid">
+  <div class="row upperRow">
+    <div class="col-md-6">
+      <p class="weatherHeading">WEATHER</p>
+    </div>
+    <div class="col-md-6">
+      <div class="searchbox">
+        <input class="search" type="text" placeholder="Search.." [(ngModel)]="searchBoxText">
+        <a (click)="searchCity(searchBoxText)"><img class="searchimg" src="../../assets/images/search.png"></a>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!toggle">
+    <p class="heading">Type the city name <img src="../../assets/images/finger.png" alt="alt text" /> to search</p>
+    <p class="headingSmall">Weather is the state of Atmosphere,describing for example the degree to<br />which it is hot
+      or cold,wet or dry,calm or stromy,clear or cloudy.</p>
+  </div>
+  <div *ngIf="toggle">
+    <div class="cardDiv" *ngFor="let card of showCard;let i=index" (click)="showModal(i,showCard)">
+      <div class="row">
+        <div class="col-md-12">
+          <p class="modalHeading">Weather in {{card?.name}},{{card?.sys?.country}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <img [src]="card.image" class="flR">
+        </div>
+        <div class="col-md-6">
+          <p class="temp txtaln pt30 flL">{{card?.main?.temp}} &#8451;</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p class="f30 txtaln">{{card?.weather[0]?.main}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p class="f30 flR pr10">{{card?.date}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Response Modal -->
+<div class="modal fade" role="dialog" id="weatherResponse" data-backdrop="static">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <a (click)="closeResponseModal()"> <img src="../../assets/images/close.png" class="imageForm" /></a>
+
+      <div class="modal-body" *ngIf="weatherData?.weather">
+        <div class="row">
+          <div class="col-md-12">
+            <p class="modalHeading">Weather in {{weatherData?.name}},{{weatherData?.sys?.country}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <img [src]="weatherData.image" class="flR"></div>
+          <div class="col-md-6 mt5">
+            <p class="temp">{{weatherData.main.temp}} &#8451;</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p class="description">{{weatherData?.weather[0]?.main}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+
+            <p class="description flL ml50"><span class="glyphColor">&#9679;</span>Wind</p>
+          </div>
+          <div class="col-md-7">
+            <p class="modalHeading">{{weatherData?.wind?.speed}}m/s,{{weatherData?.wind?.deg}}&#176;</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+
+            <p class="description flL ml50"><span class="glyphColor">&#9679;</span>Humidity</p>
+          </div>
+          <div class="col-md-7">
+            <p class="modalHeading">{{weatherData?.main?.humidity}}&#37;</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+
+            <p class="description flL ml50"><span class="glyphColor">&#9679;</span>Pressure</p>
+          </div>
+          <div class="col-md-7">
+            <p class="modalHeading">{{weatherData?.main?.pressure}} hpa</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+
+            <p class="description flL ml50"><span class="glyphColor">&#9679;</span>Sunrise</p>
+          </div>
+          <div class="col-md-7">
+            <p class="modalHeading">{{weatherData.sys.sunrise}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+
+            <p class="description flL ml50"><span class="glyphColor">&#9679;</span>Sunset</p>
+          </div>
+          <div class="col-md-7">
+            <p class="modalHeading">{{weatherData.sys.sunset}}</p>
+          </div>
+        </div>
+        <div class="row mt5">
+          <div class="col-md-12 txtaln">
+            <button type="button" *ngIf="!buttonChanges" class="btn btn-primary addRemoveButton" (click)="makeCard(weatherData)">ADD</button>
+            <button type="button" *ngIf="buttonChanges" class="btn btn-danger addRemoveButton" (click)="removeCard(weatherData)">Remove</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body" *ngIf="weatherData?.status">
+        <div class="row">
+          <div class="col-md-12 txtaln">
+            <img src="../../assets/images/alert.png">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 txtaln modalHeading mt5">
+            <p>Couldn't find "{{searchBoxText}}".<br/>Please Try another keyword</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 txtaln mt5">
+            <button type="button"  class="btn btn-primary addRemoveButton" (click)="closeOkayModal()">Okay</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,150 @@
+#background{
+    background-image: linear-gradient(142deg,#BDEF40 0%,#2cb5e8 40%,#166AD6 80%);
+    height: 100vh;
+    /* background: linear-gradient(linear, left top, left bottom, from(#fff), to(#cbccc8)) fixed; */
+
+}
+.heading{
+    text-align: center;
+    font-size:100px;
+    width: 100%;
+    color:white;
+    margin-top:15%;
+}
+.description{
+    font-size: 30px;
+    text-align: center;
+}
+.f30{
+    font-size: 30px;
+}
+.headingSmall{
+    text-align: left;
+    font-size:30px;
+    width: 100%;
+    color:white;
+    padding-left: 12%;
+}
+.weatherHeading{
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    padding-left: 2%;
+}
+
+.upperRow{
+    padding-top:2%
+}
+
+  .searchbox {
+    float: right;
+    width: 60%;
+    padding: 8px 15px;
+    border: solid thin #ccc;
+    border-radius: 4px;
+    background: #fff;
+  }
+  .search {
+    border: none;
+    outline: none;
+    width: 85%;
+  }
+  .searchimg {
+    height: 24px;
+    float: right;
+  }
+  a{
+      cursor: pointer;
+  }
+  .imageForm{
+      float:right;
+      height:15px;
+      width: 15px;
+      margin-top: 5%;
+      margin-right: 5%;
+  }
+  .modal-dialog {
+    position:absolute;
+    top:50% !important;
+    transform: translate(0, -50%) !important;
+    -ms-transform: translate(0, -50%) !important;
+    -webkit-transform: translate(0, -50%) !important;
+    left:30%;
+    width:40%;
+    height:70%;
+    max-width:40%;
+  }
+  .modal-content {
+    min-height:100%;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0; 
+  }
+  .modal-body {
+    position:absolute;
+    top:45px; /** height of header **/
+    bottom:45px;  /** height of footer **/
+    left:0;
+    right:0;
+  }
+  .modalHeading{
+      font-weight: bold;
+      font-size: 30px;
+      text-align: center;
+  }
+  .temp{
+      font-weight: bold;
+      font-size: 30px;
+  }
+  .flL{
+      float: left;
+  }
+  .flR{
+    float: right;
+  }
+  .mt5{
+      margin-top: 5%;
+  }
+  .mb5{
+    margin-bottom: 5%;
+  }
+  .ml50{
+      margin-left: 50%;
+  }
+  .pl10{
+      padding-left: 10px;
+  }
+  .pr10{
+    padding-right: 10px;
+   }
+  .pt30{
+    padding-top: 30px;
+  }
+  .txtaln{
+      text-align: center;
+  }
+  .cardDiv{
+      height: 40%;
+      width:25%;
+      background: white;
+      color:black;
+      border-radius: 5px;
+      margin-top:5%;
+      padding-top: 2%;
+      cursor: pointer;
+      display: inline-block;
+      margin-left: 2%;
+  }
+  .addRemoveButton{
+      height:50px;
+      width: 100px;
+
+  }
+  .glyphColor{
+    color:#40A5EF;
+  }
+
+ 
+
