@@ -24,10 +24,18 @@ export class WeatherComponent implements OnInit {
   constructor(private _cityWeatherService: CityWeatherService) { }
 
   ngOnInit() {
+    this.getCityData();
+  }
+
+  getCityData(){
     if (this._cityWeatherService.getData('card')) {
       this.showCard = this._cityWeatherService.getData('card');
-      console.log(this.showCard);
-      this.toggle = true;
+      if(this.showCard.length>0){
+        this.toggle = true;
+      }
+      else{
+        this.toggle=false;
+      }
     }
     else {
       this.toggle = false;
@@ -53,9 +61,7 @@ export class WeatherComponent implements OnInit {
 
     }
       , error => {
-        console.log('Error in fetching states : ', error.status);
         this.weatherData = error;
-        console.log(this.weatherData);
         if (error.status) {
           $('#weatherResponse').modal('show');
         }
@@ -80,7 +86,6 @@ export class WeatherComponent implements OnInit {
     this.searchBoxText='';
     this._cityWeatherService.setData('card', this.showCard);
     this.toggle = true;
-    console.log(this.showCard);
     $('#weatherResponse').modal('hide');
   }
   removeCard(value){
@@ -90,6 +95,9 @@ export class WeatherComponent implements OnInit {
     }
     this._cityWeatherService.setData('card', this.showCard);
     $('#weatherResponse').modal('hide');
+    if(this.showCard.length===0){
+      this.toggle=false;
+    }
   }
 
   showModal(index, data) {
